@@ -61,20 +61,19 @@
     $courseId = $_GET["courseId"];
 
     /**Estrae dal database il titolo e la desrizione del corso */
-    $courseInfoQuery = "SELECT title, description FROM courses WHERE courseId = ?";
+    $courseInfoQuery = "SELECT title, description, content FROM courses WHERE courseId = ?";
     $result = $conn->prepare($courseInfoQuery);
 
     $result->bind_param("s", $courseId);
     $result->execute();
-    $result->bind_result($title, $description);
+    $result->bind_result($title, $description, $content);
     $result->fetch();
 
     echo "<div id='container'>
         <section id='information'>
         <h2>$title</h2>
-            <p>$description</p>
+        <h3>$description</h3>
+        <p>$content</p>
         </section>
     </div>";
-
-    echo "</section>";
 ?>

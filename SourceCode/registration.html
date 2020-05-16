@@ -17,7 +17,7 @@
 
         <div id="form" style="height: 800px;">
             <div id="content">
-                <form action="registration.php" method="POST">
+                <form action="Backend/registration.php" method="POST">
                     <label for="firstname">Nome</label>
                     <input class="credentials" type="text" name="firstname" id="firstname" placeholder="Mario" required>
         
@@ -29,13 +29,16 @@
         
                     <label for="username">Username</label>
                     <input class="credentials" type="text" name="username" id="username" placeholder="mariorossi" required>
-        
+                    <label for="username" id="userError" style="display: none;">C'è già un utente registrato con il tuo Username</label>
+
                     <label for="password">Password</label>
-                    <input class="credentials" type="password" name="password" id="password" placeholder="**********" required>
+                    <input class="credentials" type="password" name="password" id="password" placeholder="**********" onchange="validatePassword()" required>
+                    <label id="passwordValidation" for="password" style="display: none;">La Password deve essere lunga almeno 8 caratteri e deve contenere almeno una lettera, un numero e un carattere speciale<br></label>
         
                     <label for="repeatPassword">Ripeti Password</label>
-                    <input class="credentials" type="password" name="repeatPassword" id="repeatPassword" placeholder="**********" required>
-        
+                    <input class="credentials" type="password" name="repeatPassword" id="repeatPassword" placeholder="**********" onchange="validateRepeatPassword()" required>
+                    <label id="repeatPasswordValidation" for="password" style="display: none;">Le password devono essere uguali<br></label>
+
                     <label for="cardnumber">Numero di Carta</label>
                     <input class="credentials" type="text" name="cardnumber" id="cardnumber" placeholder="1234567890123" required>
         
@@ -45,11 +48,82 @@
                     <label for="cvv">CVV</label>
                     <input class="credentials" type="text" name="cvv" id="CVV" placeholder="CVV" required>
 
-                    <input type="submit" class="button" value="Registrati">
+                    <input type="submit" class="button" value="Registrati" id="submit">
                 </form>
             </div>
         </div>
 
+        <script>
+            var length = false; //Flag che controlla che la lunghezza sia maggiore di 8 caratteri
+            var char = false; //Flag che controlla che sia stato inserito almeno un carattere
+            var number = false; //Flag che controlla che sia stato inserito almeno un numero
+            var specialChar = false; //Flag che controlla che sia stato inserito almeno un carattere speciale
         
+            function validatePassword() {
+            var passElement = document.getElementById("password"); //Prende la casella di testo della password
+            var label = document.getElementById("passwordValidation"); //Prende la label
+            var pass = passElement.value; //Prende la password dalla textbox
+            
+            var characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"; //Stringa che contiene tutti i caratteri
+            var specialCharacters = "!£$%&/()=?^[]{}+-*#§"; //Stringa che contiene tutti i caratteri speciali
+        
+            /*Controlla che la lunghezza sia corretta*/
+            if(pass.length >= 8) {
+                length = true;
+            }
+
+            for(i = 0; i< pass.length; i++) {
+                /*Controlla che il carattere non sia un numero*/
+                if(number == false) {
+                    if(!isNaN(parseInt(pass.charAt(i)))) {
+                        number = true;
+                    }
+                }
+
+                /*Controlla che il carattere che non è un numero sia un carattere speciale */
+                if(specialChar == false) {
+                    for(j = 0; j < specialCharacters.length; j++) {
+                        if(pass.charAt(i) == specialCharacters.charAt(j)) {
+                             specialChar = true;
+                        }
+                    }
+                }
+        
+                /**Controlla che il carattere sia una lettera */
+                if(char == false) {
+                    for(j = 0; j < characters.length; j++) {
+                        if(pass.charAt(i) == characters.charAt(j)) {
+                            char = true;
+                        }
+                    }
+                }
+            }
+
+            /*Se ci sono problemi nella password avvisa l'utente*/
+            if(!length || !char || !number || !specialChar) {
+                label.style.display = "block";
+                passElement.style.border = "1px solid red";
+            } else {
+                //Fa sparire gli avvisi
+                label.style.display = "none";
+                passElement.style.border = "0px";
+                passElement.style.borderBottom = "1px solid #E74C3C";
+            }
+
+
+        }
+
+        function validateRepeatPassword() {
+            var pass =  document.getElementById("password").value;
+            var repeat = document.getElementById("repeatPassword").value;
+            var label = document.getElementById("repeatPasswordValidation");
+
+            if(pass != repeat) {
+                label.style.display = "block";
+            } else{
+                label.style.display = "none";
+            }
+        }
+        </script>
     </body>
 </html>
