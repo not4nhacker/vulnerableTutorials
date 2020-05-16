@@ -1,0 +1,54 @@
+#form{
+    background-color: #fff;
+    width: 400px; /*L'Altezza viene definita come CSS Inline per evitare la ripetizione di codice css*/
+    position: absolute;
+    top: 220px;
+    left: 40%;
+    right: 40%;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 1px 0 rgba(0,0,0,.2);
+}
+
+#content{
+    width: 95%;
+    height: 100%;
+    position: relative;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.credentials {
+    width: 100%;
+    height: 30px;
+    margin-bottom: 20px;
+    background: none;
+    color: #E74C3C;
+    border: none;
+    border-bottom: 1px solid #E74C3C;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+  }
+  .credentials:hover {
+    opacity: 1;
+}
+
+.button {
+    width: 100%;
+    height: 30px;
+    border: none;
+    margin-bottom: 20px;
+    border-radius: 25px;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 0.2em;
+    color: #E74C3C;
+    transition: background 1s, color 1s;
+  }
+  .button:hover {
+    background: #E74C3C;
+    color: #ECF0F1;
+    cursor: pointer;
+  }

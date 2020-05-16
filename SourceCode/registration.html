@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>Registration</title>
+        <link rel="stylesheet" type="text/css" href="general.css">
+        <link rel="stylesheet" type="text/css" href="resources/forms.css">
+    </head>
+
+    <body>
+
+        <header>
+            <h1 id="title">Open Knowledge</h1>
+            <nav id="navbar">
+                <a class="navlink" href="login.html">Login</a>
+                <a class="navlink" href="registration.html">Registrati</a>
+            </nav>
+        </header>
+
+        <div id="form" style="height: 800px;">
+            <div id="content">
+                <form action="registration.php" method="POST">
+                    <label for="firstname">Nome</label>
+                    <input class="credentials" type="text" name="firstname" id="firstname" placeholder="Mario" required>
+        
+                    <label for="surname">Cognome</label>
+                    <input class="credentials" type="text" name="surname" id="surname" placeholder="Rossi" required>
+        
+                    <label for="email">E-mail</label>
+                    <input class="credentials" type="text" name="email" id="email" placeholder="mario.rossi@example.com" required>
+        
+                    <label for="username">Username</label>
+                    <input class="credentials" type="text" name="username" id="username" placeholder="mariorossi" required>
+        
+                    <label for="password">Password</label>
+                    <input class="credentials" type="password" name="password" id="password" placeholder="**********" required>
+        
+                    <label for="repeatPassword">Ripeti Password</label>
+                    <input class="credentials" type="password" name="repeatPassword" id="repeatPassword" placeholder="**********" required>
+        
+                    <label for="cardnumber">Numero di Carta</label>
+                    <input class="credentials" type="text" name="cardnumber" id="cardnumber" placeholder="1234567890123" required>
+        
+                    <label for="expirationdate">Data di Scadenza</label>
+                    <input class="credentials" type="date" name="expirationdate" id="expirationdate" required>
+        
+                    <label for="cvv">CVV</label>
+                    <input class="credentials" type="text" name="cvv" id="CVV" placeholder="CVV" required>
+
+                    <input type="submit" class="button" value="Registrati">
+                </form>
+            </div>
+        </div>
+
+        
+    </body>
+</html>

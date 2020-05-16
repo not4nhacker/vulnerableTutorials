@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" type="text/css" href="general.css">
+        <link rel="stylesheet" type="text/css" href="resources/forms.css">
+    </head>
+
+    <body>
+        <header>
+            <h1 id="title">Open Knowledge</h1>
+            <nav id="navbar">
+                <a class="navlink" href="login.html">Login</a>
+                <a class="navlink" href="registration.html">Registrati</a>
+            </nav>
+        </header>
+
+        <div id="form" style="height: 400px;">
+            <div id="content">
+                <form action="login.php" method="POST">
+                    <label for="username">Username</label>
+                    <input class="credentials" id="username" name="username"type="text" placeholder="example@hotmail.com" required>
+        
+                    <label for="password">Password</label>
+                    <input class="credentials" id="password" name="password" type="password" placeholder="**********" required>
+    
+                    <input type="submit" class="button" value="Login">
+                </form>
+            </div>
+        </div>
+    </body>
+    
+</html>
